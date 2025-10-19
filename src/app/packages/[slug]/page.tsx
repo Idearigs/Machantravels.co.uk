@@ -366,9 +366,9 @@ export default function PackageDetail() {
   return (
     <>
       <Navbar />
-      <main className="pt-20">
+      <main>
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-900 to-primary-600 py-12 lg:py-20">
+        <section className="relative bg-gradient-to-br from-primary-900 to-primary-600 py-12 lg:py-20 pt-32">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <Link href="/#packages">
               <motion.button
