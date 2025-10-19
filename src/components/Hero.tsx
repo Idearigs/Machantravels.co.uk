@@ -26,21 +26,21 @@ export default function Hero() {
     <section id="home" className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0">
-        {/* Local MP4 Video (Muted, Autoplay, Loop) */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover"
+        {/* YouTube Video Background */}
+        <iframe
+          src="https://www.youtube.com/embed/B9wUyvZZp9c?autoplay=1&mute=1&loop=1&playlist=B9wUyvZZp9c&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
           style={{
-            minWidth: '100%',
-            minHeight: '100%',
+            width: '100vw',
+            height: '56.25vw',
+            minHeight: '100vh',
+            minWidth: '177.77vh',
+            pointerEvents: 'none'
           }}
-        >
-          <source src="/videos/hero screen video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          title="Hero Background Video"
+        />
 
         {/* Dark cinematic overlay */}
         <div className="absolute inset-0 bg-black/50" />

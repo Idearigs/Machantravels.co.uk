@@ -264,13 +264,13 @@ export default function DestinationDetail() {
           {slug === 'sigiriya' && (
             <div className="absolute inset-0 w-full h-full">
               <iframe
-                src="https://www.youtube.com/embed/MW3sC2D2SWo?autoplay=1&mute=1&loop=1&playlist=MW3sC2D2SWo&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                src="https://www.youtube.com/embed/nKuaazJbSto?autoplay=1&mute=1&loop=1&playlist=nKuaazJbSto&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
                 className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
                 style={{
                   width: '100vw',
-                  height: '56.25vw', // 16:9 aspect ratio
+                  height: '56.25vw',
                   minHeight: '100vh',
-                  minWidth: '177.77vh', // 16:9 aspect ratio
+                  minWidth: '177.77vh',
                   pointerEvents: 'none'
                 }}
                 frameBorder="0"
@@ -284,20 +284,20 @@ export default function DestinationDetail() {
           {/* Video Background for Yala */}
           {slug === 'yala' && (
             <div className="absolute inset-0 w-full h-full">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute top-0 left-0 w-full h-full object-cover"
+              <iframe
+                src="https://www.youtube.com/embed/lrQUIyzUEyc?autoplay=1&mute=1&loop=1&playlist=lrQUIyzUEyc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
                 style={{
-                  minWidth: '100%',
-                  minHeight: '100%',
+                  width: '100vw',
+                  height: '56.25vw',
+                  minHeight: '100vh',
+                  minWidth: '177.77vh',
+                  pointerEvents: 'none'
                 }}
-              >
-                <source src="/videos/yala.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                title="Yala Background Video"
+              />
               <div className="absolute inset-0 bg-black/40" />
             </div>
           )}
@@ -305,20 +305,20 @@ export default function DestinationDetail() {
           {/* Video Background for Ella */}
           {slug === 'ella' && (
             <div className="absolute inset-0 w-full h-full">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute top-0 left-0 w-full h-full object-cover"
+              <iframe
+                src="https://www.youtube.com/embed/UrmG7oZbkYw?autoplay=1&mute=1&loop=1&playlist=UrmG7oZbkYw&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
                 style={{
-                  minWidth: '100%',
-                  minHeight: '100%',
+                  width: '100vw',
+                  height: '56.25vw',
+                  minHeight: '100vh',
+                  minWidth: '177.77vh',
+                  pointerEvents: 'none'
                 }}
-              >
-                <source src="/videos/Ella.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                title="Ella Background Video"
+              />
               <div className="absolute inset-0 bg-black/40" />
             </div>
           )}
