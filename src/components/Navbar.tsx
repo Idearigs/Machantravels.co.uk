@@ -42,7 +42,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-sm py-4'
-          : 'bg-white/90 backdrop-blur-md py-4'
+          : 'bg-white/10 backdrop-blur-md py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -141,9 +141,9 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="lg:hidden fixed right-0 top-[72px] bottom-0 w-[280px] bg-white shadow-2xl"
+              className="lg:hidden fixed right-0 top-[72px] bottom-0 w-[280px] bg-white shadow-2xl z-50"
             >
-              <div className="px-6 py-8 flex flex-col gap-2">
+              <div className="px-6 py-8 flex flex-col gap-2 h-full bg-white">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
@@ -157,8 +157,8 @@ export default function Navbar() {
                     }}
                     className={`text-lg font-medium py-3 px-4 rounded-xl transition-colors ${
                       activeLink === link.name
-                        ? 'text-primary-900 bg-neutral-50'
-                        : 'text-neutral-600 hover:bg-neutral-50'
+                        ? 'text-primary-900 bg-primary-50'
+                        : 'text-primary-900 hover:bg-neutral-50'
                     }`}
                   >
                     {link.name}
