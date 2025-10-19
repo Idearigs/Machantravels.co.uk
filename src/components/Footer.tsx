@@ -123,7 +123,7 @@ export default function Footer() {
         <div className="py-6 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/60">
-              © 2025 Machan Travels. All rights reserved. ATOL Protected. ABTA Member Y1234
+              © 2025 Machan Travels. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-white/60">
               <a href="#" className="hover:text-white transition-colors">Privacy</a>

@@ -368,45 +368,45 @@ export default function PackageDetail() {
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary-900 to-primary-600 py-20">
+        <section className="relative bg-gradient-to-br from-primary-900 to-primary-600 py-12 lg:py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <Link href="/#packages">
               <motion.button
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="flex items-center gap-2 text-white/90 hover:text-white mb-6 transition-colors"
+                className="flex items-center gap-2 text-white/90 hover:text-white mb-4 lg:mb-6 transition-colors"
               >
                 <ArrowLeft size={20} />
-                <span>Back to Packages</span>
+                <span className="text-sm lg:text-base">Back to Packages</span>
               </motion.button>
             </Link>
 
-            <div className="grid lg:grid-cols-3 gap-12 items-start">
+            <div className="grid lg:grid-cols-3 gap-6 lg:gap-12 items-start">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
                 className="lg:col-span-2"
               >
-                <h1 className="text-5xl lg:text-6xl font-semibold text-white mb-4 tracking-tight">
+                <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold text-white mb-3 lg:mb-4 tracking-tight">
                   {pkg.name}
                 </h1>
-                <p className="text-2xl text-white/90 font-light mb-6">
+                <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-light mb-4 lg:mb-6">
                   {pkg.subtitle}
                 </p>
-                <div className="flex items-center gap-6">
+                <div className="flex flex-wrap items-center gap-3 lg:gap-6 text-sm lg:text-base">
                   <div className="flex items-center gap-1">
-                    <Star size={20} className="text-amber-400 fill-amber-400" />
-                    <span className="text-lg font-medium text-white">{pkg.rating}</span>
-                    <span className="text-white/80">({pkg.reviews} reviews)</span>
+                    <Star size={16} className="text-amber-400 fill-amber-400 lg:w-5 lg:h-5" />
+                    <span className="font-medium text-white">{pkg.rating}</span>
+                    <span className="text-white/80 text-xs lg:text-base">({pkg.reviews} reviews)</span>
                   </div>
                   <div className="flex items-center gap-2 text-white/90">
-                    <Calendar size={20} />
-                    <span>{pkg.duration}</span>
+                    <Calendar size={16} className="lg:w-5 lg:h-5" />
+                    <span className="text-xs lg:text-base">{pkg.duration}</span>
                   </div>
                   <div className="flex items-center gap-2 text-white/90">
-                    <Users size={20} />
-                    <span>{pkg.groupSize}</span>
+                    <Users size={16} className="lg:w-5 lg:h-5" />
+                    <span className="text-xs lg:text-base">{pkg.groupSize}</span>
                   </div>
                 </div>
               </motion.div>
@@ -416,21 +416,21 @@ export default function PackageDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="bg-white rounded-3xl p-8"
+                className="bg-white rounded-2xl lg:rounded-3xl p-5 lg:p-8"
               >
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-semibold text-primary-900 mb-3">
+                <div className="text-center mb-4 lg:mb-6">
+                  <h3 className="text-lg lg:text-2xl font-semibold text-primary-900 mb-2 lg:mb-3">
                     Interested in this tour?
                   </h3>
-                  <p className="text-neutral-600 font-light text-sm">
+                  <p className="text-neutral-600 font-light text-xs lg:text-sm">
                     Contact us for pricing and availability
                   </p>
                 </div>
-                <button className="w-full px-6 py-4 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors mb-4">
+                <button className="w-full px-5 lg:px-6 py-3 lg:py-4 bg-primary-900 text-white rounded-full text-sm lg:text-base font-medium hover:bg-primary-800 transition-colors mb-3 lg:mb-4">
                   Get a Quote
                 </button>
-                <div className="flex items-center justify-center gap-2 text-sm text-neutral-600">
-                  <Shield size={16} />
+                <div className="flex items-center justify-center gap-2 text-xs lg:text-sm text-neutral-600">
+                  <Shield size={14} className="lg:w-4 lg:h-4" />
                   <span>Free cancellation up to 7 days</span>
                 </div>
               </motion.div>
