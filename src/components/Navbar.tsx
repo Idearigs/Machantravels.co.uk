@@ -42,7 +42,7 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-sm py-4'
-          : 'bg-white/10 backdrop-blur-md py-4'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -53,7 +53,9 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <h1 className="font-semibold text-xl tracking-tight text-primary-900">
+            <h1 className={`font-semibold text-xl tracking-tight transition-colors ${
+              isScrolled ? 'text-primary-900' : 'text-white'
+            }`}>
               Machan Travels
             </h1>
           </motion.div>
@@ -71,13 +73,19 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index }}
-                className="text-sm font-medium transition-colors relative text-neutral-600 hover:text-primary-900"
+                className={`text-sm font-medium transition-colors relative ${
+                  isScrolled
+                    ? 'text-neutral-600 hover:text-primary-900'
+                    : 'text-white hover:text-white/80'
+                }`}
               >
                 {link.name}
                 {activeLink === link.name && (
                   <motion.span
                     layoutId="activeLink"
-                    className="absolute -bottom-1 left-0 right-0 h-px bg-primary-900"
+                    className={`absolute -bottom-1 left-0 right-0 h-px ${
+                      isScrolled ? 'bg-primary-900' : 'bg-white'
+                    }`}
                   />
                 )}
               </motion.a>
@@ -114,51 +122,53 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 text-primary-900"
+            className={`lg:hidden p-2 transition-colors ${
+              isScrolled ? 'text-primary-900' : 'text-white'
+            }`}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Modern Minimal Mobile Menu */}
+      {/* Clean Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
-            {/* Backdrop */}
+            {/* Solid Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
+              className="lg:hidden fixed inset-0 bg-black/60 z-40"
               style={{ top: '72px' }}
             />
 
-            {/* Menu Panel */}
+            {/* Full Screen Menu Panel */}
             <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
-              className="lg:hidden fixed right-0 top-[72px] bottom-0 w-[280px] bg-white shadow-2xl z-[60]"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="lg:hidden fixed inset-x-0 top-[72px] mx-4 mt-4 bg-white rounded-3xl shadow-2xl z-50 overflow-hidden"
             >
-              <div className="px-6 py-8 flex flex-col gap-2">
+              <div className="px-6 py-6 flex flex-col">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
                     href={link.href}
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ delay: index * 0.05 }}
                     onClick={(e) => {
                       e.preventDefault()
                       handleNavClick(link.name, link.href)
                     }}
-                    className={`text-lg font-medium py-3 px-4 rounded-xl transition-colors ${
+                    className={`text-xl font-medium py-4 px-4 border-b border-neutral-100 transition-colors ${
                       activeLink === link.name
-                        ? 'text-primary-900 bg-primary-50'
-                        : 'text-primary-900 hover:bg-neutral-50'
+                        ? 'text-primary-900'
+                        : 'text-neutral-700'
                     }`}
                   >
                     {link.name}
@@ -166,10 +176,10 @@ export default function Navbar() {
                 ))}
 
                 <motion.button
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="mt-4 px-6 py-3 bg-primary-900 text-white rounded-xl font-medium hover:bg-primary-800 transition-colors"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="mt-4 px-6 py-4 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors text-center"
                 >
                   Get Started
                 </motion.button>
