@@ -280,8 +280,30 @@ export default function DestinationDetail() {
               <div className="absolute inset-0 bg-black/40" />
             </div>
           )}
+
+          {/* Video Background for Yala */}
+          {slug === 'yala' && (
+            <div className="absolute inset-0 w-full h-full">
+              <iframe
+                src="https://www.youtube.com/embed/YwBfm8nt930?autoplay=1&mute=1&loop=1&playlist=YwBfm8nt930&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
+                style={{
+                  width: '100vw',
+                  height: '56.25vw', // 16:9 aspect ratio
+                  minHeight: '100vh',
+                  minWidth: '177.77vh', // 16:9 aspect ratio
+                  pointerEvents: 'none'
+                }}
+                frameBorder="0"
+                allow="autoplay; encrypted-media"
+                title="Yala National Park Background Video"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+          )}
+
           {/* Gradient overlay for non-video backgrounds */}
-          {slug !== 'sigiriya' && <div className="absolute inset-0 bg-black/20" />}
+          {slug !== 'sigiriya' && slug !== 'yala' && <div className="absolute inset-0 bg-black/20" />}
 
           <div className="relative z-10 h-full flex items-center">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
