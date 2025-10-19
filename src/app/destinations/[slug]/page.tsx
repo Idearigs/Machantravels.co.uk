@@ -284,20 +284,20 @@ export default function DestinationDetail() {
           {/* Video Background for Yala */}
           {slug === 'yala' && (
             <div className="absolute inset-0 w-full h-full">
-              <iframe
-                src="https://www.youtube.com/embed/YwBfm8nt930?autoplay=1&mute=1&loop=1&playlist=YwBfm8nt930&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-                className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute top-0 left-0 w-full h-full object-cover"
                 style={{
-                  width: '100vw',
-                  height: '56.25vw', // 16:9 aspect ratio
-                  minHeight: '100vh',
-                  minWidth: '177.77vh', // 16:9 aspect ratio
-                  pointerEvents: 'none'
+                  minWidth: '100%',
+                  minHeight: '100%',
                 }}
-                frameBorder="0"
-                allow="autoplay; encrypted-media"
-                title="Yala National Park Background Video"
-              />
+              >
+                <source src="/videos/yala.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
               <div className="absolute inset-0 bg-black/40" />
             </div>
           )}
