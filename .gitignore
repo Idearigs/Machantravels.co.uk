@@ -41,3 +41,6 @@ next-env.d.ts
 *.swp
 *.swo
 *~
+
+# Large video files (exceeds GitHub 100MB limit)
+public/videos/Ella.mp4
