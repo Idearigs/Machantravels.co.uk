@@ -131,7 +131,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm"
+              className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
               style={{ top: '72px' }}
             />
 
@@ -141,9 +141,9 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="lg:hidden fixed right-0 top-[72px] bottom-0 w-[280px] bg-white shadow-2xl z-50"
+              className="lg:hidden fixed right-0 top-[72px] bottom-0 w-[280px] bg-white shadow-2xl z-[60]"
             >
-              <div className="px-6 py-8 flex flex-col gap-2 h-full bg-white">
+              <div className="px-6 py-8 flex flex-col gap-2">
                 {navLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
