@@ -302,8 +302,29 @@ export default function DestinationDetail() {
             </div>
           )}
 
+          {/* Video Background for Ella */}
+          {slug === 'ella' && (
+            <div className="absolute inset-0 w-full h-full">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute top-0 left-0 w-full h-full object-cover"
+                style={{
+                  minWidth: '100%',
+                  minHeight: '100%',
+                }}
+              >
+                <source src="/videos/Ella.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute inset-0 bg-black/40" />
+            </div>
+          )}
+
           {/* Gradient overlay for non-video backgrounds */}
-          {slug !== 'sigiriya' && slug !== 'yala' && <div className="absolute inset-0 bg-black/20" />}
+          {slug !== 'sigiriya' && slug !== 'yala' && slug !== 'ella' && <div className="absolute inset-0 bg-black/20" />}
 
           <div className="relative z-10 h-full flex items-center">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
