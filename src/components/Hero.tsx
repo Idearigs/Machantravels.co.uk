@@ -26,21 +26,21 @@ export default function Hero() {
     <section id="home" className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0">
-        {/* YouTube Embed (Muted, Autoplay) */}
-        <iframe
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          src="https://www.youtube.com/embed/q0mbKsKG-ng?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=q0mbKsKG-ng&start=120&modestbranding=1&playsinline=1"
-          title="Sri Lanka Background Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+        {/* Local MP4 Video (Muted, Autoplay, Loop) */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover"
           style={{
-            width: '100vw',
-            height: '100vh',
-            objectFit: 'cover',
-            transform: 'scale(1.5)',
-            transformOrigin: 'center',
+            minWidth: '100%',
+            minHeight: '100%',
           }}
-        />
+        >
+          <source src="/videos/hero screen video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
         {/* Dark cinematic overlay */}
         <div className="absolute inset-0 bg-black/50" />
