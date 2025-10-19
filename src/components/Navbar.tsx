@@ -97,19 +97,25 @@ export default function Navbar() {
               transition={{ delay: 0.3 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative px-6 py-2.5 rounded-full overflow-hidden font-medium text-sm text-white"
+              className={`group relative px-6 py-2.5 rounded-full overflow-hidden font-medium text-sm text-white transition-all ${
+                isScrolled ? 'bg-primary-900 hover:bg-primary-800' : ''
+              }`}
             >
-              {/* Glass Background */}
-              <div className="absolute inset-0 bg-white/10 backdrop-blur-xl border border-white/20" />
+              {/* Glass Background - Only when not scrolled */}
+              {!isScrolled && (
+                <>
+                  <div className="absolute inset-0 bg-white/10 backdrop-blur-xl border border-white/20" />
 
-              {/* Animated Liquid Effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="absolute inset-0 bg-gradient-to-r from-accent-teal/30 via-accent-sky/30 to-accent-emerald/30 animate-gradient"
-                     style={{ backgroundSize: '200% 200%' }} />
-              </div>
+                  {/* Animated Liquid Effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent-teal/30 via-accent-sky/30 to-accent-emerald/30 animate-gradient"
+                         style={{ backgroundSize: '200% 200%' }} />
+                  </div>
 
-              {/* Shine Effect */}
-              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                  {/* Shine Effect */}
+                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                </>
+              )}
 
               {/* Button Content */}
               <span className="relative flex items-center gap-2 justify-center">
