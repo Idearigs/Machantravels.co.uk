@@ -411,7 +411,7 @@ export default function PackageDetail() {
                 </div>
               </motion.div>
 
-              {/* Price Card */}
+              {/* Booking Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -419,12 +419,15 @@ export default function PackageDetail() {
                 className="bg-white rounded-3xl p-8"
               >
                 <div className="text-center mb-6">
-                  <div className="text-sm text-neutral-500 mb-2">Starting from</div>
-                  <div className="text-5xl font-semibold text-primary-900 mb-1">{pkg.price}</div>
-                  <div className="text-sm text-neutral-500">per person</div>
+                  <h3 className="text-2xl font-semibold text-primary-900 mb-3">
+                    Interested in this tour?
+                  </h3>
+                  <p className="text-neutral-600 font-light text-sm">
+                    Contact us for pricing and availability
+                  </p>
                 </div>
                 <button className="w-full px-6 py-4 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors mb-4">
-                  Book This Tour
+                  Get a Quote
                 </button>
                 <div className="flex items-center justify-center gap-2 text-sm text-neutral-600">
                   <Shield size={16} />
@@ -570,12 +573,14 @@ export default function PackageDetail() {
               Ready to start your adventure?
             </h2>
             <p className="text-lg text-neutral-600 mb-8 font-light">
-              Contact us to customize this tour or ask any questions.
+              Contact us for current pricing and to customize this tour to your preferences.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors">
-                Book This Tour
-              </button>
+              <Link href="/#contact">
+                <button className="px-8 py-4 bg-primary-900 text-white rounded-full font-medium hover:bg-primary-800 transition-colors">
+                  Get a Quote
+                </button>
+              </Link>
               <Link href="/#contact">
                 <button className="px-8 py-4 bg-white text-primary-900 border-2 border-primary-900 rounded-full font-medium hover:bg-neutral-50 transition-colors">
                   Contact Us

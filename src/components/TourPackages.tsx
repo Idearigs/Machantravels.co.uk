@@ -84,21 +84,14 @@ export default function TourPackages() {
               <Link href={`/packages/${pkg.id}`}>
                 <div className="group bg-neutral-50 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col">
                   {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-semibold text-primary-900 mb-2 tracking-tight group-hover:text-primary-800 transition-colors">
-                        {pkg.name}
-                      </h3>
-                      <div className="flex items-center gap-1 mb-3">
-                        <Star size={16} className="text-amber-400 fill-amber-400" />
-                        <span className="text-sm font-medium text-primary-900">{pkg.rating}</span>
-                        <span className="text-sm text-neutral-500">({pkg.reviews} reviews)</span>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xs text-neutral-500 mb-1">From</div>
-                      <div className="text-3xl font-semibold text-primary-900">{pkg.price}</div>
-                      <div className="text-xs text-neutral-500">per person</div>
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-semibold text-primary-900 mb-2 tracking-tight group-hover:text-primary-800 transition-colors">
+                      {pkg.name}
+                    </h3>
+                    <div className="flex items-center gap-1 mb-3">
+                      <Star size={16} className="text-amber-400 fill-amber-400" />
+                      <span className="text-sm font-medium text-primary-900">{pkg.rating}</span>
+                      <span className="text-sm text-neutral-500">({pkg.reviews} reviews)</span>
                     </div>
                   </div>
 
