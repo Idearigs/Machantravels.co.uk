@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowLeft, ChevronDown } from 'lucide-react'
+import { ArrowLeft, ChevronDown, MapPin, Clock, Users } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useParams } from 'next/navigation'
@@ -51,8 +51,52 @@ const experiencesData: Record<string, any> = {
     title: 'Ancient Heritage',
     subtitle: 'Explore 2,500 Years of History',
     description: 'Discover magnificent temples, ancient kingdoms, and archaeological wonders that span over 25 centuries. From the iconic Sigiriya Rock Fortress to the sacred Temple of the Tooth, these ancient sites reveal the cultural richness and architectural brilliance of Sri Lanka.',
+    longDescription: 'Sri Lanka is home to some of Asia\'s most important archaeological sites. The Cultural Triangle encompasses three major ancient kingdoms and their capitals, each contributing uniquely to Sri Lankan history. These sites showcase remarkable architectural achievements, intricate stone carvings, and profound Buddhist heritage that has influenced the island\'s culture for thousands of years.',
     image: 'https://images.unsplash.com/photo-1548013146-72e2a6f6e6d8?w=1200&h=600&fit=crop',
-    color: 'from-amber-500 to-orange-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-900',
+
+    subcategories: [
+      {
+        name: 'Sigiriya Rock Fortress',
+        description: 'Ancient 5th century fortress rising 200m above jungle with frescoes and gardens',
+        image: 'https://images.unsplash.com/photo-1548013146-72e2a6f6e6d8?w=500&h=400&fit=crop',
+        duration: 'Half day',
+        highlight: 'Marvel at the ancient paintings and climb 1,200 steps',
+      },
+      {
+        name: 'Temple of the Tooth',
+        description: 'Sacred Buddhist temple in Kandy housing a revered tooth relic of Buddha',
+        image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=400&fit=crop',
+        duration: '2-3 hours',
+        highlight: 'Attend evening prayer ceremonies and cultural dances',
+      },
+      {
+        name: 'Dambulla Cave Temple',
+        description: 'Ancient cave complex with 150+ Buddha statues and Buddhist relics from 1st century BC',
+        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
+        duration: '2 hours',
+        highlight: 'Explore five sacred caves filled with ancient artwork',
+      },
+      {
+        name: 'Polonnaruwa Ancient City',
+        description: 'Medieval capital with remarkable archaeological monuments and ancient palaces',
+        image: 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=500&h=400&fit=crop',
+        duration: '3-4 hours',
+        highlight: 'Witness exquisite stone carvings and temple structures',
+      },
+    ],
+
+    activities: [
+      'Historical guided tours',
+      'Photography of ancient monuments',
+      'Cultural performances and dance shows',
+      'Temple blessing ceremonies',
+      'Archaeological site exploration',
+      'Local artisan workshops',
+    ],
+
+    bestTime: 'December to April - Dry season with pleasant weather perfect for exploring outdoor sites.',
 
     gallery: [
       'https://images.unsplash.com/photo-1548013146-72e2a6f6e6d8?w=500&h=400&fit=crop',
@@ -97,8 +141,54 @@ const experiencesData: Record<string, any> = {
     title: 'Pristine Beaches',
     subtitle: 'Crystal Waters & Golden Sands',
     description: 'Experience some of the world\'s most beautiful beaches with crystal-clear waters and golden sands. From the crescent-shaped Mirissa Beach perfect for whale watching to the secluded coves of the southern coast, Sri Lanka\'s beaches offer both relaxation and adventure.',
+    longDescription: 'Sri Lanka\'s coastline stretches over 1,300 kilometers and features diverse beaches suitable for every traveler. Whether you seek thrilling water sports, peaceful relaxation, marine wildlife encounters, or colonial heritage exploration, the island\'s pristine beaches deliver unforgettable experiences.',
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=600&fit=crop',
-    color: 'from-sky-500 to-blue-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-900',
+
+    subcategories: [
+      {
+        name: 'Mirissa Beach',
+        description: 'Crescent-shaped beach renowned for blue whale watching December-April',
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=400&fit=crop',
+        duration: '2-3 days',
+        highlight: 'Best whale watching in the world with friendly locals',
+      },
+      {
+        name: 'Unawatuna Beach',
+        description: 'Consistently ranked top 10 beaches in Indian Ocean, perfect for swimming',
+        image: 'https://images.unsplash.com/photo-1473496169865-658ba7c44d8a?w=500&h=400&fit=crop',
+        duration: '1-2 days',
+        highlight: 'Crystal clear waters and vibrant beach culture',
+      },
+      {
+        name: 'Galle Fort Beach',
+        description: 'Historic UNESCO site overlooking pristine beaches with colonial charm',
+        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
+        duration: '1 day',
+        highlight: 'Walk 17th century ramparts with ocean views',
+      },
+      {
+        name: 'Secret Beach Coves',
+        description: 'Hidden secluded beaches perfect for privacy and natural beauty',
+        image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=400&fit=crop',
+        duration: '1-2 days',
+        highlight: 'Escape crowds and find untouched paradise',
+      },
+    ],
+
+    activities: [
+      'Whale watching tours',
+      'Surfing and bodyboarding',
+      'Snorkeling and diving',
+      'Beach relaxation',
+      'Sunset viewing',
+      'Water sports',
+      'Seafood dining',
+      'Fort exploration',
+    ],
+
+    bestTime: 'November to March - Calm seas and ideal weather for all beach activities.',
 
     gallery: [
       'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=400&fit=crop',
@@ -142,9 +232,53 @@ const experiencesData: Record<string, any> = {
   'wildlife-safari': {
     title: 'Wildlife Safari',
     subtitle: 'Encounter Nature\'s Majesty',
-    description: 'Immerse yourself in Sri Lanka\'s incredible biodiversity. Home to leopards, elephants, and over 215 bird species, the island\'s national parks offer unparalleled opportunities to witness exotic wildlife in their natural habitats. Experience thrilling safari adventures through untamed wilderness.',
+    description: 'Immerse yourself in Sri Lanka\'s incredible biodiversity. Home to leopards, elephants, and over 215 bird species, the island\'s national parks offer unparalleled opportunities to witness exotic wildlife in their natural habitats.',
+    longDescription: 'Sri Lanka is a wildlife paradise with diverse ecosystems ranging from tropical rainforests to grasslands and wetlands. The island\'s protected areas harbor some of the world\'s rarest species including the Asian elephant, Sri Lankan leopard, and endemic birds found nowhere else on Earth.',
     image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&h=600&fit=crop',
-    color: 'from-green-500 to-emerald-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-900',
+
+    subcategories: [
+      {
+        name: 'Yala National Park',
+        description: 'Highest leopard concentration worldwide with diverse wildlife and ecosystems',
+        image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&h=400&fit=crop',
+        duration: '2-3 days',
+        highlight: 'See leopards, elephants, and over 215 bird species',
+      },
+      {
+        name: 'Udawalawe National Park',
+        description: 'Large elephant herds and diverse birdlife in pristine wilderness',
+        image: 'https://images.unsplash.com/photo-1544550717-e3f7a5d34f0d?w=500&h=400&fit=crop',
+        duration: '2 days',
+        highlight: 'Guaranteed elephant sightings and safari experience',
+      },
+      {
+        name: 'Sinharaja Rainforest',
+        description: 'UNESCO site with 60% endemic species and jungle trekking adventures',
+        image: 'https://images.unsplash.com/photo-1511497584788-876760111969?w=500&h=400&fit=crop',
+        duration: '1-2 days',
+        highlight: 'Explore virgin rainforest and rare endemic species',
+      },
+      {
+        name: 'Bundala National Park',
+        description: 'Wetland sanctuary with migratory birds and coastal wildlife',
+        image: 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=500&h=400&fit=crop',
+        duration: '1 day',
+        highlight: 'Bird watching paradise with 170+ bird species',
+      },
+    ],
+
+    activities: [
+      'Jeep safaris',
+      'Wildlife photography',
+      'Bird watching tours',
+      'Rainforest trekking',
+      'Nature walks',
+      'Expert naturalist guides',
+    ],
+
+    bestTime: 'December to March - Dry season with best wildlife viewing and comfortable weather.',
 
     gallery: [
       'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&h=400&fit=crop',
@@ -188,9 +322,55 @@ const experiencesData: Record<string, any> = {
   'culinary-journey': {
     title: 'Culinary Journey',
     subtitle: 'Taste Authentic Sri Lankan Flavors',
-    description: 'Embark on a gastronomic adventure through Sri Lanka\'s vibrant culinary traditions. Sample authentic curries, fresh seafood, and world-famous Ceylon tea. From local street food to fine dining, discover the rich flavors and spices that define Sri Lankan cuisine.',
+    description: 'Embark on a gastronomic adventure through Sri Lanka\'s vibrant culinary traditions. Sample authentic curries, fresh seafood, and world-famous Ceylon tea. Discover the rich flavors and spices that define Sri Lankan cuisine.',
+    longDescription: 'Sri Lankan cuisine reflects centuries of cultural influences blending local traditions with Arabian, Indian, and colonial heritage. Each region offers unique dishes showcasing fresh ingredients, aromatic spices, and cooking techniques passed down through generations.',
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=600&fit=crop',
-    color: 'from-teal-500 to-cyan-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-900',
+
+    subcategories: [
+      {
+        name: 'Tea Plantations & Tasting',
+        description: 'Visit working tea estates in Ella and enjoy authentic Ceylon tea tastings',
+        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
+        duration: 'Half day',
+        highlight: 'Learn tea production from leaf to cup',
+      },
+      {
+        name: 'Traditional Curry Cooking',
+        description: 'Master authentic Sri Lankan curry recipes with professional local chefs',
+        image: 'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=500&h=400&fit=crop',
+        duration: '3-4 hours',
+        highlight: 'Hands-on cooking class with fresh local ingredients',
+      },
+      {
+        name: 'Street Food & Local Dining',
+        description: 'Experience vibrant street food culture and local favorites',
+        image: 'https://images.unsplash.com/photo-1507831039040-4a8f57021b15?w=500&h=400&fit=crop',
+        duration: '2-3 hours',
+        highlight: 'Taste authentic kottu roti, hoppers, and deviled dishes',
+      },
+      {
+        name: 'Seafood Dining Experiences',
+        description: 'Fresh-caught seafood prepared right on the beach or fine dining',
+        image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&h=400&fit=crop',
+        duration: 'Evening',
+        highlight: 'Sunset seafood dinners with ocean views',
+      },
+    ],
+
+    activities: [
+      'Tea plantation tours',
+      'Cooking classes',
+      'Market visits',
+      'Spice garden tours',
+      'Street food tasting',
+      'Fine dining experiences',
+      'Brewery visits',
+      'Traditional drum roasting',
+    ],
+
+    bestTime: 'Year-round, but best during dry season for tea plantation visits.',
 
     gallery: [
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
@@ -255,14 +435,14 @@ export default function ExperienceDetail() {
       <Navbar />
       <main>
         {/* Hero Section */}
-        <section className="relative h-[60vh] bg-gradient-to-br from-primary-900 to-primary-600 overflow-hidden pt-32">
+        <section className={`relative h-[60vh] ${experience.bgColor} overflow-hidden pt-32`}>
           <div className="absolute inset-0 w-full h-full">
             <img
               src={experience.image}
               alt={experience.title}
-              className="w-full h-full object-cover opacity-40"
+              className="w-full h-full object-cover opacity-30"
             />
-            <div className={`absolute inset-0 bg-gradient-to-br ${experience.color} opacity-40`} />
+            <div className="absolute inset-0 bg-primary-900 opacity-40" />
           </div>
 
           <div className="relative z-10 h-full flex items-center pt-20">
@@ -298,16 +478,113 @@ export default function ExperienceDetail() {
         <section className="py-16 lg:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="space-y-20">
-              {/* Description */}
+              {/* Overview */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <p className="text-xl text-neutral-700 leading-relaxed max-w-3xl">
-                  {experience.description}
-                </p>
+                <div className="max-w-3xl">
+                  <p className="text-xl text-neutral-700 leading-relaxed mb-4">
+                    {experience.description}
+                  </p>
+                  <p className="text-lg text-neutral-600 leading-relaxed">
+                    {experience.longDescription}
+                  </p>
+                </div>
               </motion.div>
+
+              {/* Best Time to Visit */}
+              {experience.bestTime && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-primary-50 rounded-3xl p-8 lg:p-12 border border-primary-200"
+                >
+                  <div className="flex items-start gap-4">
+                    <Clock size={28} className="text-primary-900 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="text-2xl font-semibold text-primary-900 mb-3">Best Time to Visit</h3>
+                      <p className="text-neutral-700 leading-relaxed">{experience.bestTime}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Subcategories/Cards */}
+              {experience.subcategories && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="text-3xl font-semibold text-primary-900 mb-10 tracking-tight">
+                    Explore {experience.title}
+                  </h2>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {experience.subcategories.map((item: any, index: number) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="bg-white border-2 border-primary-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow group cursor-pointer"
+                      >
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-xl font-semibold text-primary-900 mb-2">{item.name}</h3>
+                          <p className="text-neutral-600 mb-4 font-light">{item.description}</p>
+                          <div className="flex items-center gap-4 text-sm text-neutral-600 mb-4">
+                            <div className="flex items-center gap-1">
+                              <Clock size={16} />
+                              <span>{item.duration}</span>
+                            </div>
+                          </div>
+                          <p className="text-primary-900 font-medium mb-4">{item.highlight}</p>
+                          <button className="w-full px-4 py-2 bg-primary-900 text-white rounded-lg font-medium hover:bg-primary-800 transition-colors">
+                            Learn More
+                          </button>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Activities */}
+              {experience.activities && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <h2 className="text-3xl font-semibold text-primary-900 mb-8 tracking-tight">
+                    Activities & Experiences
+                  </h2>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {experience.activities.map((activity: string, index: number) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className="bg-primary-50 rounded-xl p-4 border border-primary-200"
+                      >
+                        <p className="text-primary-900 font-medium">{activity}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
 
               {/* Gallery */}
               {experience.gallery && (
@@ -368,14 +645,14 @@ export default function ExperienceDetail() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className={`bg-gradient-to-br ${experience.color} bg-opacity-10 rounded-3xl p-8 lg:p-12`}
+                  className="bg-primary-50 rounded-3xl p-8 lg:p-12 border border-primary-200"
                 >
                   <h2 className="text-3xl font-semibold text-primary-900 mb-8 tracking-tight">
                     🌴 Interesting Facts
                   </h2>
                   <div className="grid md:grid-cols-2 gap-6">
                     {experience.funFacts.map((fact: string, index: number) => (
-                      <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-200">
+                      <div key={index} className="bg-white rounded-2xl p-6 border border-primary-100">
                         <div className="flex gap-4">
                           <div className="text-3xl font-bold text-primary-900 min-w-12">
                             {String.fromCharCode(49 + index)}
@@ -411,7 +688,7 @@ export default function ExperienceDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-r from-primary-900 to-primary-700 rounded-3xl p-12 text-center"
+                className="bg-primary-900 rounded-3xl p-12 text-center"
               >
                 <h2 className="text-3xl font-semibold text-white mb-4">Ready to Experience This?</h2>
                 <p className="text-white/90 mb-8 max-w-2xl mx-auto">
