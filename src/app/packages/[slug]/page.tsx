@@ -1,11 +1,49 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, Users, Star, ArrowLeft, Check, MapPin, Clock, Shield } from 'lucide-react'
+import { Calendar, Users, Star, ArrowLeft, Check, MapPin, Clock, Shield, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+
+// FAQ Item Component
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      className="bg-white border border-neutral-200 rounded-2xl overflow-hidden"
+    >
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full px-6 py-5 flex items-center justify-between hover:bg-neutral-50 transition-colors text-left"
+      >
+        <span className="font-semibold text-neutral-900">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown size={20} className="text-primary-900" />
+        </motion.div>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0 }}
+        transition={{ duration: 0.2 }}
+        className="overflow-hidden"
+      >
+        <div className="px-6 py-4 bg-neutral-50 border-t border-neutral-200">
+          <p className="text-neutral-700 leading-relaxed font-light">{answer}</p>
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
 
 // Mock data - in production this would come from a database
 const packagesData: Record<string, any> = {
@@ -86,6 +124,36 @@ const packagesData: Record<string, any> = {
       'Camera',
       'Insect repellent',
       'Personal medications',
+    ],
+    gallery: [
+      'https://images.unsplash.com/photo-1548013146-72e2a6f6e6d8?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=500&h=400&fit=crop',
+    ],
+    video: 'https://www.youtube.com/embed/nKuaazJbSto?si=Ej7TPwpW0VfSHm73',
+    funFacts: [
+      'Sigiriya Rock Fortress stands 200 meters tall and dates back to the 5th century AD, making it one of the oldest structures in the world.',
+      'The Temple of the Tooth in Kandy is said to house a tooth relic of Buddha, making it one of the most sacred Buddhist sites.',
+      'Dambulla Cave Temple is the largest cave temple complex in Sri Lanka with over 150 Buddha statues.',
+      'The Cultural Triangle region has been home to the Sinhalese civilization for over 2,300 years.',
+    ],
+    faqs: [
+      {
+        question: 'What is the best time to visit the Cultural Triangle?',
+        answer: 'December to April (dry season) is ideal for visiting. The weather is pleasant with minimal rainfall, perfect for exploring ancient sites and enjoying outdoor activities.',
+      },
+      {
+        question: 'How physically demanding is the Sigiriya climb?',
+        answer: 'The climb involves approximately 1,200 steps and takes 45-60 minutes to reach the summit. It\'s moderately challenging but suitable for most fitness levels with regular breaks.',
+      },
+      {
+        question: 'Are there dress code requirements for temples?',
+        answer: 'Yes, temples require modest clothing. Cover your shoulders and knees. Remove shoes before entering sacred areas and show respect to Buddhist customs.',
+      },
+      {
+        question: 'Can the tour be customized?',
+        answer: 'Absolutely! All our tours can be customized to match your interests, pace, and budget. Contact us to discuss your preferences.',
+      },
     ],
   },
   'coastal-adventure': {
@@ -182,6 +250,36 @@ const packagesData: Record<string, any> = {
       'Sandals and water shoes',
       'Motion sickness tablets (for boat trips)',
     ],
+    gallery: [
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1473496169865-658ba7c44d8a?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
+    ],
+    video: 'https://www.youtube.com/embed/lrQUIyzUEyc?si=Ej7TPwpW0VfSHm73',
+    funFacts: [
+      'Galle Fort is a UNESCO World Heritage Site built by the Portuguese in 1588 and covers 36 acres of historic colonial architecture.',
+      'Mirissa is famous for blue whale watching between December and April when whales migrate through Sri Lankan waters.',
+      'The southern coast has some of the world\'s most beautiful and least crowded beaches, perfect for relaxation and water sports.',
+      'Sea turtle conservation is a major focus, with multiple hatcheries working to protect endangered sea turtle species.',
+    ],
+    faqs: [
+      {
+        question: 'What\'s the best time for whale watching?',
+        answer: 'December to April is peak whale watching season in Mirissa. You\'ll have the highest chances of spotting blue whales and sperm whales.',
+      },
+      {
+        question: 'Is snorkeling safe for beginners?',
+        answer: 'Yes! Our guides provide complete equipment and instruction. Most snorkeling spots are in shallow, calm waters suitable for beginners.',
+      },
+      {
+        question: 'How long does whale watching typically take?',
+        answer: 'Most whale watching tours are 4-5 hours, departing early in the morning. Weather conditions may affect trips.',
+      },
+      {
+        question: 'Can children participate in water activities?',
+        answer: 'Yes, children can join most activities with proper supervision and safety equipment. We recommend ages 5+ for snorkeling.',
+      },
+    ],
   },
   'wildlife-safari': {
     name: 'Wildlife & Nature',
@@ -267,6 +365,36 @@ const packagesData: Record<string, any> = {
       'Hiking boots',
       'Rain jacket',
     ],
+    gallery: [
+      'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1544550717-e3f7a5d34f0d?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1511497584788-876760111969?w=500&h=400&fit=crop',
+    ],
+    video: 'https://www.youtube.com/embed/UrmG7oZbkYw?si=Ej7TPwpW0VfSHm73',
+    funFacts: [
+      'Sri Lanka\'s Yala National Park has the highest concentration of leopards in the world, with over 50 individuals in the park.',
+      'Elephants in Udawalawe can stand up to 3 meters tall and weigh as much as 5 tons, making them gentle giants of the animal kingdom.',
+      'Sinharaja Rainforest is a UNESCO World Heritage Site and a biodiversity hotspot with over 60% of endemic species found nowhere else on Earth.',
+      'Over 215 bird species have been recorded in Sri Lanka, with many found exclusively in the central highlands and rainforests.',
+    ],
+    faqs: [
+      {
+        question: 'What is the best time for safari?',
+        answer: 'December to March offers the best wildlife viewing with dry weather. Early mornings (6-9 AM) are most productive for spotting animals.',
+      },
+      {
+        question: 'Will we see leopards?',
+        answer: 'Leopards are elusive but sightings are possible, especially on multi-day safaris. We also guarantee elephant and bird sightings.',
+      },
+      {
+        question: 'How long are safari drives?',
+        answer: 'Safari drives typically last 4-6 hours. Morning and afternoon safaris are available, each offering different wildlife activity.',
+      },
+      {
+        question: 'Is the rainforest trek difficult?',
+        answer: 'The trek is moderate with varied terrain. It\'s suitable for most fitness levels but good hiking boots and prior fitness help.',
+      },
+    ],
   },
   'tea-country': {
     name: 'Hill Country & Tea Trails',
@@ -341,6 +469,36 @@ const packagesData: Record<string, any> = {
       'Camera',
       'Day backpack',
       'Reusable water bottle',
+    ],
+    gallery: [
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1469022563149-aa64dbd37dae?w=500&h=400&fit=crop',
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=400&fit=crop',
+    ],
+    video: 'https://www.youtube.com/embed/UrmG7oZbkYw?si=Ej7TPwpW0VfSHm73',
+    funFacts: [
+      'Ceylon tea is world-renowned and produces about 340,000 tonnes per year, making Sri Lanka one of the largest tea exporters globally.',
+      'The scenic train ride from Kandy to Ella is considered one of the most beautiful railway journeys in the world.',
+      'Ella is the highest populated area in Sri Lanka at 1,041 meters, offering cool climate and breathtaking views.',
+      'The Nine Arch Bridge in Ella is a stunning architectural feat built during the colonial period, perfect for photography.',
+    ],
+    faqs: [
+      {
+        question: 'Can I visit tea factories and plantations?',
+        answer: 'Yes! We include tea factory tours in the package. You\'ll see the entire tea processing from leaf to cup and enjoy tastings.',
+      },
+      {
+        question: 'Is the train journey comfortable?',
+        answer: 'Yes, reserved seats ensure comfort. The journey offers spectacular views of mountains, waterfalls, and tea plantations.',
+      },
+      {
+        question: 'What is the altitude like in Ella?',
+        answer: 'Ella is at 1,041 meters elevation. It\'s cooler than coastal areas (about 10°C cooler), so bring warm layers.',
+      },
+      {
+        question: 'Are there easy and challenging hike options?',
+        answer: 'Yes! We offer both easy walks and challenging hikes. Little Adam\'s Peak is moderate; Ella Rock is more demanding.',
+      },
     ],
   },
 }
@@ -563,6 +721,103 @@ export default function PackageDetail() {
                 ))}
               </div>
             </motion.div>
+
+            {/* Gallery Section */}
+            {pkg.gallery && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-semibold text-primary-900 mb-8 tracking-tight">
+                  Gallery
+                </h3>
+                <div className="grid md:grid-cols-3 gap-4">
+                  {pkg.gallery.map((image: string, index: number) => (
+                    <motion.div
+                      key={index}
+                      className="relative h-64 rounded-2xl overflow-hidden group"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img
+                        src={image}
+                        alt={`${pkg.name} Gallery ${index + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Video Section */}
+            {pkg.video && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-semibold text-primary-900 mb-8 tracking-tight">
+                  Experience the Journey
+                </h3>
+                <div className="relative w-full rounded-3xl overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src={pkg.video}
+                    title={`${pkg.name} Video`}
+                    className="absolute top-0 left-0 w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              </motion.div>
+            )}
+
+            {/* Fun Facts Section */}
+            {pkg.funFacts && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl p-8 lg:p-12"
+              >
+                <h3 className="text-2xl font-semibold text-primary-900 mb-8 tracking-tight">
+                  🌴 Fun Facts About This Destination
+                </h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {pkg.funFacts.map((fact: string, index: number) => (
+                    <div key={index} className="bg-white rounded-2xl p-6 shadow-sm border border-primary-100">
+                      <div className="flex gap-4">
+                        <div className="text-3xl font-bold text-primary-900 min-w-12">
+                          {String.fromCharCode(97 + index)}
+                        </div>
+                        <p className="text-neutral-700 leading-relaxed font-light">{fact}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* FAQ Section */}
+            {pkg.faqs && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-2xl font-semibold text-primary-900 mb-8 tracking-tight">
+                  Frequently Asked Questions
+                </h3>
+                <div className="space-y-4">
+                  {pkg.faqs.map((faq: { question: string; answer: string }, index: number) => (
+                    <FAQItem key={index} question={faq.question} answer={faq.answer} />
+                  ))}
+                </div>
+              </motion.div>
+            )}
           </div>
         </section>
 
