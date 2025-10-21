@@ -16,8 +16,6 @@ const packages = [
     description: 'Discover ancient kingdoms, sacred temples, and UNESCO World Heritage Sites.',
     highlights: ['Sigiriya Rock Fortress', 'Temple of the Tooth', 'Dambulla Cave Temple'],
     image: 'https://images.unsplash.com/photo-1548013146-72e2a6f6e6d8?w=600&h=400&fit=crop',
-    color: 'from-amber-500 to-orange-600',
-    bgColor: 'bg-amber-50',
   },
   {
     id: 'coastal-adventure',
@@ -30,8 +28,6 @@ const packages = [
     description: 'Pristine beaches, whale watching, and colonial heritage along the southern coast.',
     highlights: ['Mirissa Whale Watching', 'Galle Fort', 'Unawatuna Beach'],
     image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&h=400&fit=crop',
-    color: 'from-sky-500 to-blue-600',
-    bgColor: 'bg-sky-50',
   },
   {
     id: 'wildlife-safari',
@@ -44,8 +40,6 @@ const packages = [
     description: 'Encounter elephants, leopards, and exotic birds in their natural habitat.',
     highlights: ['Yala National Park', 'Udawalawe Safari', 'Sinharaja Rainforest'],
     image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?w=600&h=400&fit=crop',
-    color: 'from-green-500 to-emerald-600',
-    bgColor: 'bg-green-50',
   },
   {
     id: 'tea-country',
@@ -58,14 +52,12 @@ const packages = [
     description: 'Misty mountains, emerald tea plantations, and colonial charm.',
     highlights: ['Ella Nine Arch Bridge', 'Tea Factory Visit', 'Horton Plains'],
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=400&fit=crop',
-    color: 'from-teal-500 to-cyan-600',
-    bgColor: 'bg-teal-50',
   },
 ]
 
 export default function TourPackages() {
   return (
-    <section id="packages" className="py-24 lg:py-32 bg-white">
+    <section id="packages" className="py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -73,7 +65,7 @@ export default function TourPackages() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-3xl mb-20 text-center mx-auto"
+          className="max-w-3xl mb-16 text-center mx-auto"
         >
           <h2 className="text-4xl lg:text-5xl font-semibold text-primary-900 mb-4 tracking-tight">
             Here are some tour packages that made for you
@@ -94,15 +86,15 @@ export default function TourPackages() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
               <Link href={`/packages/${pkg.id}`}>
-                <div className={`group ${pkg.bgColor} rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col border border-neutral-200`}>
+                <div className="group bg-white rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer h-full flex flex-col border border-neutral-200">
                   {/* Image Section */}
-                  <div className={`relative h-48 bg-gradient-to-br ${pkg.color} overflow-hidden`}>
+                  <div className="relative h-48 overflow-hidden bg-primary-100">
                     <img
                       src={pkg.image}
                       alt={pkg.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 opacity-80"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 opacity-90"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${pkg.color} opacity-30`} />
+                    <div className="absolute inset-0 bg-black/15" />
                   </div>
 
                   {/* Content Section */}
