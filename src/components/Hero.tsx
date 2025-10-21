@@ -25,21 +25,25 @@ export default function Hero() {
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden">
       {/* Video Background */}
-      <div className="absolute inset-0">
-        {/* YouTube Video Background */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        {/* YouTube Video Background - scaled to cover without black bars */}
         <iframe
           src="https://www.youtube.com/embed/B9wUyvZZp9c?autoplay=1&mute=1&loop=1&playlist=B9wUyvZZp9c&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2"
-          style={{
-            width: '100vw',
-            height: '56.25vw',
-            minHeight: '100vh',
-            minWidth: '177.77vh',
-            pointerEvents: 'none'
-          }}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
           title="Hero Background Video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100%',
+            height: '100%',
+            transform: 'translate(-50%, -50%) scale(1.35)',
+            pointerEvents: 'none',
+            border: 'none'
+          }}
         />
 
         {/* Dark cinematic overlay */}
