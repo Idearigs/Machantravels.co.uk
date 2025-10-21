@@ -3,10 +3,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
+import { useRouter, usePathname } from 'next/navigation'
 
 const navLinks = [
   { name: 'Destinations', href: '#destinations' },
   { name: 'Packages', href: '#packages' },
+  { name: 'Tourist Guide', href: '/tourist-guide' },
   { name: 'About', href: '#about' },
   { name: 'Contact', href: '#contact' },
 ]
@@ -15,6 +17,8 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeLink, setActiveLink] = useState('Destinations')
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,9 +33,16 @@ export default function Navbar() {
     setActiveLink(name)
     setIsMobileMenuOpen(false)
 
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    // Check if it's a page link or anchor link
+    if (href.startsWith('/')) {
+      // Page navigation
+      router.push(href)
+    } else {
+      // Anchor link
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
     }
   }
 
