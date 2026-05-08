@@ -38,9 +38,11 @@ export default function Hero() {
             position: 'absolute',
             top: '50%',
             left: '50%',
-            width: '100%',
-            height: '100%',
-            transform: 'translate(-50%, -50%) scale(1.35)',
+            width: '100vw',
+            height: '56.25vw',   /* 16:9 — fills width */
+            minHeight: '100vh',
+            minWidth: '177.78vh', /* 16:9 — fills height */
+            transform: 'translate(-50%, -50%)',
             pointerEvents: 'none',
             border: 'none'
           }}
