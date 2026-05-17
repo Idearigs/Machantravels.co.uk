@@ -1,0 +1,363 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const destinations = [
+  { name: 'Sigiriya', tagline: 'Ancient rock fortress', image: 'https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=800&q=80', description: 'Rise above the jungle canopy to a 5th-century palace perched on a volcanic rock.' },
+  { name: 'Ella', tagline: 'Misty mountain highlands', image: 'https://images.unsplash.com/photo-1566296314736-6eaac1ca0cb9?w=800&q=80', description: 'Rolling tea estates, dramatic gorges and the iconic Nine Arch Bridge.' },
+  { name: 'Mirissa', tagline: 'Indian Ocean shores', image: 'https://images.unsplash.com/photo-1559592413-7cbb7a882cbb?w=800&q=80', description: 'Crescent bay of golden sand, blue whales, and perfect surf.' },
+  { name: 'Yala', tagline: 'Leopard country', image: 'https://images.unsplash.com/photo-1612673066879-59fd60ec7b5b?w=800&q=80', description: 'The world\'s highest density of leopards roaming ancient dry forest.' },
+  { name: 'Galle Fort', tagline: 'Dutch colonial heritage', image: 'https://images.unsplash.com/photo-1597040663342-45b6af3d91a5?w=800&q=80', description: 'A UNESCO World Heritage walled city of cobbled streets and ocean ramparts.' },
+  { name: 'Kandy', tagline: 'Cultural heartland', image: 'https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?w=800&q=80', description: 'Home to the sacred Temple of the Tooth and emerald Kandy Lake.' },
+];
+
+const packages = [
+  { name: 'Classic Ceylon', duration: '10 Days', price: 'From £2,850', highlights: ['Sigiriya Rock', 'Kandy Temple', 'Tea Country', 'Galle Fort', 'Mirissa Beach'], tag: 'Most Popular' },
+  { name: 'Wild & Ancient', duration: '14 Days', price: 'From £3,950', highlights: ['Yala Safari', 'Minneriya', 'Polonnaruwa', 'Dambulla Cave', 'Whale Watching'], tag: 'Adventure' },
+  { name: 'Bespoke Journey', duration: 'Custom', price: 'On Request', highlights: ['Private chauffeur', 'Boutique hotels', 'Expert guides', 'Flexible dates', 'Any duration'], tag: 'Luxury' },
+];
+
+const features = [
+  { icon: '✦', title: 'Handcrafted Itineraries', body: 'Every journey is designed around your interests, pace, and travel style.' },
+  { icon: '✦', title: 'Local Expertise', body: 'Our guides have deep roots in Sri Lanka — they know the places no guidebook mentions.' },
+  { icon: '✦', title: 'Seamless Experience', body: 'From airport pickup to final farewell, every detail is taken care of.' },
+  { icon: '✦', title: 'Small Groups', body: 'We keep groups intimate so you experience, not observe.' },
+];
+---
+
+<Layout>
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex items-center justify-between">
+      <a href="/" class="text-white font-semibold text-lg tracking-tight transition-colors duration-300" id="nav-logo">
+        Machan Travels
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        {['Destinations', 'Packages', 'About', 'Contact'].map(item => (
+          <a href={`#${item.toLowerCase()}`} class="text-sm font-medium text-white/80 hover:text-white transition-colors duration-200" id={`nav-link-${item}`}>
+            {item}
+          </a>
+        ))}
+        <a href="#contact" class="px-5 py-2 rounded-full text-sm font-medium bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-gray-900 transition-all duration-300">
+          Plan Your Trip
+        </a>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass px-6 py-4 flex flex-col gap-4">
+      {['Destinations', 'Packages', 'About', 'Contact'].map(item => (
+        <a href={`#${item.toLowerCase()}`} class="text-sm font-medium text-gray-800 py-2 border-b border-gray-100">{item}</a>
+      ))}
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative h-screen w-full overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=1920&q=90"
+        alt="Sri Lanka"
+        class="w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+    </div>
+
+    <div class="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+      <p class="text-white/70 text-xs font-medium tracking-widest uppercase mb-6">Sri Lanka · Est. 2009</p>
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none tracking-tight mb-6 max-w-5xl">
+        The Pearl of<br/>the Indian Ocean
+      </h1>
+      <p class="text-white/80 text-lg md:text-xl font-light max-w-xl mb-10 leading-relaxed">
+        Bespoke journeys crafted for those who seek the extraordinary.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#packages" class="px-8 py-3.5 rounded-full bg-white text-gray-900 text-sm font-semibold hover:bg-white/90 transition-all duration-300 shadow-lg">
+          Explore Packages
+        </a>
+        <a href="#destinations" class="px-8 py-3.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/30 text-white text-sm font-semibold hover:bg-white/20 transition-all duration-300">
+          View Destinations
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60">
+      <span class="text-xs tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-white/60 to-transparent animate-pulse"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES STRIP -->
+  <section class="bg-white py-20 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      {features.map(f => (
+        <div class="flex flex-col gap-3">
+          <span class="text-gold text-lg">{f.icon}</span>
+          <h3 class="font-semibold text-gray-900 text-base">{f.title}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed font-light">{f.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section id="destinations" class="py-24 lg:py-32 bg-gray-50 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">Where to go</p>
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight max-w-lg">
+          Destinations that take your breath away
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {destinations.map(d => (
+          <div class="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer">
+            <div class="overflow-hidden aspect-[4/3]">
+              <img
+                src={d.image}
+                alt={d.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-medium text-gold uppercase tracking-widest mb-1">{d.tagline}</p>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{d.name}</h3>
+              <p class="text-sm text-gray-500 font-light leading-relaxed">{d.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages" class="py-24 lg:py-32 bg-white px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">Tour packages</p>
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight max-w-lg">
+          Journeys designed around you
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {packages.map((pkg, i) => (
+          <div class={`relative rounded-3xl p-8 flex flex-col gap-6 ${i === 0 ? 'bg-dark-green text-white' : 'bg-gray-50 text-gray-900'}`}>
+            <div class="flex items-start justify-between">
+              <div>
+                <span class={`text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full ${i === 0 ? 'bg-white/10 text-white/70' : 'bg-gray-200 text-gray-600'}`}>
+                  {pkg.tag}
+                </span>
+                <h3 class="text-2xl font-bold mt-4">{pkg.name}</h3>
+                <p class={`text-sm mt-1 ${i === 0 ? 'text-white/60' : 'text-gray-500'}`}>{pkg.duration}</p>
+              </div>
+            </div>
+            <ul class="flex flex-col gap-2">
+              {pkg.highlights.map(h => (
+                <li class={`text-sm flex items-center gap-2 ${i === 0 ? 'text-white/80' : 'text-gray-600'}`}>
+                  <span class={`w-1 h-1 rounded-full flex-shrink-0 ${i === 0 ? 'bg-gold' : 'bg-dark-green'}`}></span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-auto pt-4 flex items-center justify-between border-t border-white/10">
+              <span class={`font-semibold ${i === 0 ? 'text-gold' : 'text-dark-green'}`}>{pkg.price}</span>
+              <a href="#contact" class={`text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-white text-dark-green hover:bg-white/90' : 'bg-dark-green text-white hover:bg-light-green'}`}>
+                Enquire
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FULL BLEED CTA -->
+  <section class="relative h-[60vh] overflow-hidden flex items-center justify-center">
+    <img
+      src="https://images.unsplash.com/photo-1559592413-7cbb7a882cbb?w=1920&q=80"
+      alt="Mirissa"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 text-center px-6">
+      <h2 class="text-4xl md:text-6xl font-bold text-white tracking-tight mb-6">
+        Your story begins here
+      </h2>
+      <a href="#contact" class="inline-flex px-8 py-3.5 rounded-full bg-white text-gray-900 text-sm font-semibold hover:bg-white/90 transition-all duration-300 shadow-lg">
+        Start Planning
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 lg:py-32 px-6 bg-white">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">Our story</p>
+        <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+          Rooted in Sri Lanka.<br/>Trusted by travellers.
+        </h2>
+        <p class="text-gray-500 text-lg font-light leading-relaxed mb-6">
+          Since 2009, Machan Travels has been guiding discerning UK travellers through the wonders of Sri Lanka. We go beyond the guidebook — connecting you with hidden temples, family-run tea estates, and local families who share their home.
+        </p>
+        <p class="text-gray-500 text-lg font-light leading-relaxed mb-8">
+          Every itinerary is built from scratch. No cookie-cutter packages, no rushed schedules — just thoughtful travel, expertly arranged.
+        </p>
+        <div class="grid grid-cols-3 gap-6">
+          {[['15+', 'Years experience'], ['2,000+', 'Happy travellers'], ['100%', 'Bespoke journeys']].map(([num, label]) => (
+            <div>
+              <p class="text-3xl font-bold text-dark-green">{num}</p>
+              <p class="text-sm text-gray-400 font-light mt-1">{label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="relative">
+        <img
+          src="https://images.unsplash.com/photo-1580834341580-8c17a3a630ca?w=800&q=80"
+          alt="Kandy"
+          class="rounded-3xl w-full h-[500px] object-cover shadow-2xl"
+        />
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-xl">
+          <p class="text-2xl font-bold text-dark-green">★ 4.9</p>
+          <p class="text-sm text-gray-400 font-light">from 340+ reviews</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="py-24 lg:py-32 px-6 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-16 text-center">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">Testimonials</p>
+        <h2 class="text-4xl font-bold text-gray-900 tracking-tight">Loved by travellers</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { name: 'Sarah & James T.', location: 'London', text: 'Every single detail was perfectly arranged. Sri Lanka exceeded every expectation — and Machan made it effortless.' },
+          { name: 'Michael R.', location: 'Edinburgh', text: 'The handpicked accommodations were stunning. Waking up to mist over the tea estates in Ella was a moment I\'ll never forget.' },
+          { name: 'Claire W.', location: 'Manchester', text: 'We\'ve used many tour companies but Machan is on another level. Genuinely personal service from people who love their country.' },
+        ].map(t => (
+          <div class="bg-white rounded-2xl p-8 shadow-sm">
+            <p class="text-gray-600 text-base font-light leading-relaxed mb-6">"{t.text}"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-dark-green flex items-center justify-center text-white text-sm font-semibold">
+                {t.name[0]}
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-gray-900">{t.name}</p>
+                <p class="text-xs text-gray-400">{t.location}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-24 lg:py-32 px-6 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-4">Get in touch</p>
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight mb-4">
+        Let's plan your trip
+      </h2>
+      <p class="text-gray-500 text-lg font-light mb-12">
+        Tell us your dream and we'll build your itinerary. No commitment, no pressure.
+      </p>
+      <form class="text-left flex flex-col gap-4" name="contact" method="POST">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">Name</label>
+            <input type="text" name="name" required placeholder="Your name" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-dark-green transition-colors" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">Email</label>
+            <input type="email" name="email" required placeholder="you@email.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-dark-green transition-colors" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">When are you travelling?</label>
+          <input type="text" name="travel_date" placeholder="e.g. March 2026, flexible" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-dark-green transition-colors" />
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wider">Tell us about your dream trip</label>
+          <textarea name="message" required rows="4" placeholder="Where do you want to go? How many people? Any special interests?" class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-dark-green transition-colors resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-dark-green text-white text-sm font-semibold hover:bg-light-green transition-colors duration-300">
+          Send Enquiry
+        </button>
+      </form>
+      <p class="text-center text-xs text-gray-400 mt-4">We reply within 24 hours · No spam, ever</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-900 text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <h3 class="font-semibold text-lg mb-3">Machan Travels</h3>
+          <p class="text-gray-400 text-sm font-light leading-relaxed max-w-xs">
+            Creating extraordinary journeys to Sri Lanka for discerning UK travellers since 2009.
+          </p>
+          <div class="flex gap-4 mt-6">
+            <a href="mailto:hello@machantravels.co.uk" class="text-sm text-gray-400 hover:text-white transition-colors">hello@machantravels.co.uk</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Destinations</p>
+          {['Sigiriya', 'Ella', 'Mirissa', 'Yala', 'Galle Fort', 'Kandy'].map(d => (
+            <p class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer mb-2">{d}</p>
+          ))}
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Company</p>
+          {['About Us', 'Tour Packages', 'Travel Guide', 'Contact'].map(l => (
+            <p class="text-sm text-gray-400 hover:text-white transition-colors cursor-pointer mb-2">{l}</p>
+          ))}
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-gray-500">© 2025 Machan Travels. All rights reserved.</p>
+        <p class="text-xs text-gray-500">London, United Kingdom</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    const navLogo = document.getElementById('nav-logo');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar?.classList.add('glass');
+        navbar?.classList.remove('bg-transparent');
+        if (navLogo) navLogo.style.color = '#111827';
+        document.querySelectorAll('[id^="nav-link-"]').forEach(el => {
+          (el as HTMLElement).style.color = '#6B7280';
+        });
+      } else {
+        navbar?.classList.remove('glass');
+        if (navLogo) navLogo.style.color = 'white';
+        document.querySelectorAll('[id^="nav-link-"]').forEach(el => {
+          (el as HTMLElement).style.color = 'rgba(255,255,255,0.8)';
+        });
+      }
+    });
+
+    // Mobile menu
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+    });
+  </script>
+</Layout>

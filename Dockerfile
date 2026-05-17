@@ -1,11 +1,12 @@
-FROM node:20-alpine
-RUN apk add --no-cache libc6-compat
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 COPY . .
 RUN npm run build
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-EXPOSE 3000
-CMD ["npx", "next", "start", "-p", "3000"]
+
+FROM nginx:alpine AS runner
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
