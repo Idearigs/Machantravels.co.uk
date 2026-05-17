@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description: 'Discover the Pearl of the Indian Ocean with Machan Travels. Premium bespoke tours to Sri Lanka for discerning UK travellers.',
   keywords: ['Sri Lanka tours', 'UK travel', 'luxury holidays', 'Ceylon tourism', 'bespoke travel'],
   authors: [{ name: 'Machan Travels' }],
+  icons: { icon: '/favicon.svg' },
   openGraph: {
     title: 'Machan Travels - Premium Sri Lanka Tours',
     description: 'Bespoke luxury tours to Sri Lanka for UK travellers',
