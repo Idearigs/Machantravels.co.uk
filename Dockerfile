@@ -43,7 +43,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # Install sharp for image optimization in standalone mode
-RUN npm install sharp
+RUN npm install sharp@0.33.5
 
 USER nextjs
 
