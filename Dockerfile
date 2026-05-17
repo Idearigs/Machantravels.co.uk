@@ -14,8 +14,6 @@ RUN apk add --no-cache nginx libc6-compat
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV PORT=3001
-ENV HOSTNAME=127.0.0.1
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Copy built app
@@ -44,5 +42,5 @@ RUN printf 'server {\n\
 
 EXPOSE 3000
 
-# Start nginx and Next.js together
-CMD nginx && npm start
+# Start nginx (foreground in background) then Next.js on port 3001
+CMD sh -c "nginx -g 'daemon off;' & npx next start -p 3001 -H 127.0.0.1"
